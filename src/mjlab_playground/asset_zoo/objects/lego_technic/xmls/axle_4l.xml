@@ -1,0 +1,38 @@
+<mujoco model="lego_technic_axle_4l">
+  <compiler angle="radian" autolimits="true"/>
+
+  <statistic center="0 0 0" extent="0.08"/>
+
+  <visual>
+    <headlight diffuse="0.8 0.8 0.8" ambient="0.4 0.4 0.4" specular="0.1 0.1 0.1"/>
+    <rgba haze="0.15 0.2 0.25 1"/>
+    <global azimuth="135" elevation="-25"/>
+  </visual>
+
+  <default>
+    <default class="lego_technic">
+      <site group="5" size="0.0015" rgba="1 0 0 1"/>
+      <default class="visual">
+        <geom contype="0" conaffinity="0" group="0" rgba="0.9 0.02 0.02 1"/>
+      </default>
+      <default class="collision">
+        <geom contype="1" conaffinity="1" group="3" rgba="0.8 0.05 0.04 1"
+          condim="3" friction="0.6 0.005 0.0001" solref="0.004 1"
+          solimp="0.95 0.99 0.001"/>
+      </default>
+    </default>
+  </default>
+
+  <worldbody>
+    <light pos="0 -0.05 0.12" dir="0 0 -1" directional="false"/>
+    <body name="axle_4l" childclass="lego_technic">
+      <freejoint name="axle_4l_freejoint"/>
+      <geom name="axle_4l_visual" class="visual" type="capsule"
+        fromto="0 0 -0.016 0 0 0.016" size="0.0023"/>
+      <geom name="axle_4l_collision" class="collision" type="capsule"
+        fromto="0 0 -0.016 0 0 0.016" size="0.0023" mass="0.001"/>
+      <site name="rod_tip" pos="0 0 -0.016"/>
+      <site name="rod_back" pos="0 0 0.016"/>
+    </body>
+  </worldbody>
+</mujoco>
